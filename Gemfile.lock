@@ -1,8 +1,11 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    ffi (1.10.0)
     json (2.2.0)
     minitest (5.11.3)
+    rbnacl (6.0.1)
+      ffi
 
 PLATFORMS
   ruby
@@ -10,6 +13,7 @@ PLATFORMS
 DEPENDENCIES
   json
   minitest
+  rbnacl
 
 BUNDLED WITH
    2.0.1
