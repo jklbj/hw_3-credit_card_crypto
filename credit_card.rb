@@ -1,11 +1,13 @@
 require_relative './luhn_validator.rb'
 require 'json'
+require 'rbnacl'
 
 class CreditCard
   include LuhnValidator
 
   # instance variables with automatic getter/setter methods
   attr_accessor :number, :expiration_date, :owner, :credit_network
+  
 
   def initialize(number, expiration_date, owner, credit_network)
     @number = number
@@ -42,7 +44,8 @@ class CreditCard
 
   # return a cryptographically secure hash
   def hash_secure
-    sha256 = OpenSSL::Digest::SHA256.new
-    digest = sha256.digest(to_s)
+    # sha256 = OpenSSL::Digest::SHA256.new
+    nacl = RbNaCl::Hash
+    digest = nacl.sha256(to_s)
   end
 end
